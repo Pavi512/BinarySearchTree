@@ -53,6 +53,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return 1 + size(root.left) + size(root.right);
     }
 
+    //searching for a element
+    public boolean search(Node root,T ele){
+        boolean flag=false;
+        if (root == null)
+            return false;
+        else if(ele.compareTo(root.data)==0){
+            return true;
+        }
+        else if(ele.compareTo(root.data)<0){
+            flag= search(root.left,ele);
+        }
+        else{
+            flag= search(root.right,ele);
+        }
+        return flag;
+    }
+
     //Main method
     public static void main(String[] args) {
 
@@ -78,5 +95,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
         System.out.println("\n");
 
         System.out.println("Size of Binary Tree : " + bst.size(bst.root));
+
+        System.out.println();
+        System.out.println(bst.search(bst.root,63));
     }
 }
